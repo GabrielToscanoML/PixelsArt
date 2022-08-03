@@ -1,62 +1,74 @@
-const getUl = document.querySelectorAll('ul');
-function criaColunasComLi() {
-  for (let index = 0; index < getUl.length; index += 1) {
-    for (let index2 = 0; index2 < getUl.length; index2 += 1) {
-      let criaLi = document.createElement('li');
-      criaLi.style.backgroundColor = 'white';
-      criaLi.className = 'pixel';
-     // criaLi.textContent = index;
-      document.querySelectorAll('ul')[index].appendChild(criaLi);
-    }
-  }
-}
-criaColunasComLi();
 
 
+/*
 // adicionei a classe selected inicialmente na cor black
 const blackColor = document.getElementById('black');
 blackColor.classList.add('selected');
+*/
+
+let currentSelected = document.getElementsByClassName('selected');
+console.log(currentSelected[0]);
+
 
 // cria a variavel que recebe a cor
 let selectedColor = document.getElementById('currentColor');
 selectedColor.style.backgroundColor = document.querySelector('.selected').id;
 
-/*
+
   let getBlack = document.getElementById('black');
-  getBlack = addEventListener('click', selectColor);
+  getBlack.addEventListener('click', getCurrentColorBlack);
 
   let getColor2 = document.getElementById('red');
-  getColor2 = addEventListener('click', selectColor);
+  getColor2.addEventListener('click', getCurrentColorRed);
 
   let getColor3 = document.getElementById('blue');
-  getColor3 = addEventListener('click', selectColor);
+  getColor3.addEventListener('click', getCurrentColorBlue);
 
-  let getColor4 = document.querySelector('.green');
-  getColor4 = addEventListener('click', selectColor);
+  let getColor4 = document.getElementById('green');
+  getColor4.addEventListener('click', getCurrentColorGreen);
 
-function selectColor(color) {
-  console.log(color);
-  console.log(selectedColor);
-  //selectedColor.style.backgroundColor;
- // console.log(selectedColor);
-  
-  let removeSelected = document.getElementsByClassName('selected');
-  console.log(removeSelected);
-  removeSelected[0].classList.remove('selected');
-
-  color.classList.add('selected');
+function getCurrentColorBlack() {
+  currentSelected[0].classList.remove('selected');
+  document.getElementById('black').classList.add('selected');
+  console.log(document.getElementById('black'));
   selectedColor.style.backgroundColor = document.querySelector('.selected').id;
-  console.log(color);
 }
-*/
+
+function getCurrentColorRed() {
+  currentSelected[0].classList.remove('selected');
+  document.getElementById('red').classList.add('selected');
+  console.log(document.getElementById('red'));
+  selectedColor.style.backgroundColor = document.querySelector('.selected').id;
+}
+
+function getCurrentColorBlue() {
+  currentSelected[0].classList.remove('selected');
+  document.getElementById('blue').classList.add('selected');
+  console.log(document.getElementById('blue'));
+  selectedColor.style.backgroundColor = document.querySelector('.selected').id;
+}
+
+function getCurrentColorGreen() {
+  currentSelected[0].classList.remove('selected');
+  document.getElementById('green').classList.add('selected');
+  console.log(document.getElementById('green'));
+  selectedColor.style.backgroundColor = document.querySelector('.selected').id;
+}
 
 function changeBackgrondColor(currentPixel) {
   currentPixel.target.style.backgroundColor = selectedColor.style.backgroundColor;
 }
-
-function paintPixels() {
-  let currentPixel = document.querySelectorAll('ul');
-  currentPixel = addEventListener('click', changeBackgrondColor);
+const getUl = document.querySelectorAll('ul');
+function criaColunasComLi() {
+  for (let index = 0; index < getUl.length; index += 1) {
+    for (let index2 = 0; index2 < getUl.length; index2 += 1) {
+      let criaLi = document.createElement('li');
+      criaLi.addEventListener('click', changeBackgrondColor);
+      criaLi.style.backgroundColor = 'white';
+      criaLi.className = 'pixel';
+      document.querySelectorAll('ul')[index].appendChild(criaLi);
+    }
+  }
 }
-paintPixels();
+criaColunasComLi();
 
