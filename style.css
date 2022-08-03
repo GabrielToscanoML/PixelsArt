@@ -8,9 +8,10 @@ h1 {
 }
 
 #pixel-board {
-  margin-top: 120px;
+  margin-top: 50px;
   display: inline-flex;
-  width: auto;
+  width: 200px;
+  height: 200px;
   float: left;
 }
 
@@ -27,7 +28,6 @@ li {
   border: 1px solid black;
   width: 40px;
   height: 40px;
-  margin: 5px;
 }
 
 #black {
