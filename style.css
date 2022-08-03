@@ -9,11 +9,11 @@ h1 {
 
 #pixel-board {
   display: grid;
-    outline: black 1px solid;
-    width: 200px;
-    margin-top: 20px;
-    grid-template-columns: repeat(auto-fill, 40px);
-    grid-template-rows: repeat(auto-fill, 40px);
+  outline: black 1px solid;
+  width: 200px;
+  margin-top: 20px;
+  grid-template-columns: repeat(auto-fill, 40px);
+  grid-template-rows: repeat(auto-fill, 40px);
 }
 
 .pixel {

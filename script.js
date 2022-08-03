@@ -1,4 +1,4 @@
-let boardSize = 5;
+const boardSize = 5;
 
 // adicionei a classe selected inicialmente na cor black
 const blackColor = document.getElementById('black');
@@ -41,8 +41,6 @@ function changeBackgrondColor(currentPixel) {
   currentP.target.style.backgroundColor = selectedColor.style.backgroundColor;
 }
 
-const getPixelBoard = document.getElementById('pixel-board');
-
 function criaPixels(num) {
   for (let index = 0; index < num * num; index += 1) {
     const criaDiv = document.createElement('div');
@@ -55,13 +53,13 @@ function criaPixels(num) {
 
 criaPixels(boardSize);
 
+function limpaQuadros() {
+  for (let index = 0; index < (boardSize * boardSize); index += 1) {
+    const getAllPixels = document.getElementsByClassName('pixel');
+    getAllPixels[index].style.backgroundColor = 'white';
+  }
+}
+
 const btnClear = document.getElementById('clear-board');
 btnClear.textContent = 'Limpar';
 btnClear.addEventListener('click', limpaQuadros);
-
-function limpaQuadros() {
-  for (let index = 0; index < (boardSize * boardSize); index += 1) {
-      const getAllPixels = document.getElementsByClassName('pixel');
-      getAllPixels[index].style.backgroundColor = 'white';
-  }
-}
