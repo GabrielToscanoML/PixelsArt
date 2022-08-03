@@ -8,31 +8,31 @@ const currentSelected = document.getElementsByClassName('selected');
 const selectedColor = document.getElementById('currentColor');
 selectedColor.style.backgroundColor = document.querySelector('.selected').id;
 
-const getBlack = document.getElementById('black');
-getBlack.addEventListener('click', function(e) {
-  getCurrentColor('black');
-});
-
-const getColor2 = document.getElementById('red');
-getColor2.addEventListener('click', function(e) {
-  getCurrentColor('red');
-});
-
-const getColor3 = document.getElementById('blue');
-getColor3.addEventListener('click', function(e) {
-  getCurrentColor('blue');
-});
-
-const getColor4 = document.getElementById('green');
-getColor4.addEventListener('click', function(e) {
-  getCurrentColor('green');
-});
-
 function getCurrentColor(identify) {
   currentSelected[0].classList.remove('selected');
   document.getElementById(identify).classList.add('selected');
   selectedColor.style.backgroundColor = document.querySelector('.selected').id;
 }
+
+const getBlack = document.getElementById('black');
+getBlack.addEventListener('click', () => {
+  getCurrentColor('black');
+});
+
+const getColor2 = document.getElementById('red');
+getColor2.addEventListener('click', () => {
+  getCurrentColor('red');
+});
+
+const getColor3 = document.getElementById('blue');
+getColor3.addEventListener('click', () => {
+  getCurrentColor('blue');
+});
+
+const getColor4 = document.getElementById('green');
+getColor4.addEventListener('click', () => {
+  getCurrentColor('green');
+});
 
 function changeBackgrondColor(currentPixel) {
   currentPixel.target.style.backgroundColor = selectedColor.style.backgroundColor;
