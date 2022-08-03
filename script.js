@@ -53,13 +53,13 @@ function criaColunasComLi() {
 }
 criaColunasComLi();
 
+function limpaQuadros() {
+  for (let index = 0; index < (getUl.length * getUl.length); index += 1) {
+    const getAllPixels = document.getElementsByClassName('pixel');
+    getAllPixels[index].style.backgroundColor = 'white';
+  }
+}
+
 const btnClear = document.getElementById('clear-board');
 btnClear.textContent = 'Limpar';
 btnClear.addEventListener('click', limpaQuadros);
-
-function limpaQuadros() {
-  for (let index = 0; index < (getUl.length*getUl.length); index += 1) {
-      const getAllPixels = document.getElementsByClassName('pixel');
-      getAllPixels[index].style.backgroundColor = 'white';
-  }
-}
