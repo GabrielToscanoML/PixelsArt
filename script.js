@@ -1,3 +1,5 @@
+let boardSize = 5;
+
 // adicionei a classe selected inicialmente na cor black
 const blackColor = document.getElementById('black');
 blackColor.classList.add('selected');
@@ -39,27 +41,27 @@ function changeBackgrondColor(currentPixel) {
   currentP.target.style.backgroundColor = selectedColor.style.backgroundColor;
 }
 
-const getUl = document.querySelectorAll('ul');
-function criaColunasComLi() {
-  for (let index = 0; index < getUl.length; index += 1) {
-    for (let index2 = 0; index2 < getUl.length; index2 += 1) {
-      const criaLi = document.createElement('li');
-      criaLi.addEventListener('click', changeBackgrondColor);
-      criaLi.style.backgroundColor = 'white';
-      criaLi.className = 'pixel';
-      document.querySelectorAll('ul')[index].appendChild(criaLi);
-    }
-  }
-}
-criaColunasComLi();
+const getPixelBoard = document.getElementById('pixel-board');
 
-function limpaQuadros() {
-  for (let index = 0; index < (getUl.length * getUl.length); index += 1) {
-    const getAllPixels = document.getElementsByClassName('pixel');
-    getAllPixels[index].style.backgroundColor = 'white';
+function criaPixels(num) {
+  for (let index = 0; index < num * num; index += 1) {
+    const criaDiv = document.createElement('div');
+    criaDiv.addEventListener('click', changeBackgrondColor);
+    criaDiv.style.backgroundColor = 'white';
+    criaDiv.className = 'pixel';
+    document.getElementById('pixel-board').appendChild(criaDiv);
   }
 }
+
+criaPixels(boardSize);
 
 const btnClear = document.getElementById('clear-board');
 btnClear.textContent = 'Limpar';
 btnClear.addEventListener('click', limpaQuadros);
+
+function limpaQuadros() {
+  for (let index = 0; index < (boardSize * boardSize); index += 1) {
+      const getAllPixels = document.getElementsByClassName('pixel');
+      getAllPixels[index].style.backgroundColor = 'white';
+  }
+}
