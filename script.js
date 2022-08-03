@@ -1,63 +1,44 @@
-
-
-/*
 // adicionei a classe selected inicialmente na cor black
 const blackColor = document.getElementById('black');
 blackColor.classList.add('selected');
-*/
 
 let currentSelected = document.getElementsByClassName('selected');
-console.log(currentSelected[0]);
-
 
 // cria a variavel que recebe a cor
 let selectedColor = document.getElementById('currentColor');
 selectedColor.style.backgroundColor = document.querySelector('.selected').id;
 
 
-  let getBlack = document.getElementById('black');
-  getBlack.addEventListener('click', getCurrentColorBlack);
+let getBlack = document.getElementById('black');
+getBlack.addEventListener('click', function() {
+  getCurrentColor('black');
+});
 
-  let getColor2 = document.getElementById('red');
-  getColor2.addEventListener('click', getCurrentColorRed);
+let getColor2 = document.getElementById('red');
+getColor2.addEventListener('click', function() {
+  getCurrentColor('red');
+});
 
-  let getColor3 = document.getElementById('blue');
-  getColor3.addEventListener('click', getCurrentColorBlue);
+let getColor3 = document.getElementById('blue');
+getColor3.addEventListener('click', function() {
+  getCurrentColor('blue');
+});
 
-  let getColor4 = document.getElementById('green');
-  getColor4.addEventListener('click', getCurrentColorGreen);
+let getColor4 = document.getElementById('green');
+getColor4.addEventListener('click', function() {
+  getCurrentColor('green');
+});
 
-function getCurrentColorBlack() {
+function getCurrentColor(identify){
   currentSelected[0].classList.remove('selected');
-  document.getElementById('black').classList.add('selected');
-  console.log(document.getElementById('black'));
-  selectedColor.style.backgroundColor = document.querySelector('.selected').id;
-}
-
-function getCurrentColorRed() {
-  currentSelected[0].classList.remove('selected');
-  document.getElementById('red').classList.add('selected');
-  console.log(document.getElementById('red'));
-  selectedColor.style.backgroundColor = document.querySelector('.selected').id;
-}
-
-function getCurrentColorBlue() {
-  currentSelected[0].classList.remove('selected');
-  document.getElementById('blue').classList.add('selected');
-  console.log(document.getElementById('blue'));
-  selectedColor.style.backgroundColor = document.querySelector('.selected').id;
-}
-
-function getCurrentColorGreen() {
-  currentSelected[0].classList.remove('selected');
-  document.getElementById('green').classList.add('selected');
-  console.log(document.getElementById('green'));
+  document.getElementById(identify).classList.add('selected');
   selectedColor.style.backgroundColor = document.querySelector('.selected').id;
 }
 
 function changeBackgrondColor(currentPixel) {
   currentPixel.target.style.backgroundColor = selectedColor.style.backgroundColor;
 }
+
 const getUl = document.querySelectorAll('ul');
 function criaColunasComLi() {
   for (let index = 0; index < getUl.length; index += 1) {
