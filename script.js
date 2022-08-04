@@ -1,3 +1,5 @@
+const boardSize = 5;
+
 // adicionei a classe selected inicialmente na cor black
 const blackColor = document.getElementById('black');
 blackColor.classList.add('selected');
@@ -14,7 +16,6 @@ function getCurrentColor(identify) {
   selectedColor.style.backgroundColor = document.querySelector('.selected').id;
 }
 
-// criando evento para cada cor na paleta de cores
 const getBlack = document.getElementById('black');
 getBlack.addEventListener('click', () => {
   getCurrentColor('black');
@@ -35,53 +36,12 @@ getColor4.addEventListener('click', () => {
   getCurrentColor('green');
 });
 
-// funcao para alterar a cor de fundo de cada pixel
 function changeBackgrondColor(currentPixel) {
   const currentP = currentPixel;
   currentP.target.style.backgroundColor = selectedColor.style.backgroundColor;
 }
 
-// criacao do quadro
-let num;
-
-const btnGenerateBoard = document.getElementById('generate-board');
-btnGenerateBoard.addEventListener('click', () => {
-  let getTextValue = document.getElementById('board-size').value;
-  num = getTextValue;
-  if(getTextValue === '') {
-    window.alert('Board Inválido!');
-    return;
-  }
-  if (getTextValue > 4 && getTextValue < 51){ 
-    criaPixels(getTextValue);
-    return;
-  }
-  if (getTextValue > 50) {
-    getTextValue = 50;
-    criaPixels(getTextValue);
-    return;
-  }
-  if (getTextValue < 5 && getTextValue > 0) {
-    getTextValue = 5;
-    criaPixels(getTextValue);
-    return;
-  }
-});
-
-/*
-function deletePixels(num) {
-  for (let index = 0; index < num * num; index += 1) {
-    const deleteDiv = document.querySelectorAll('.pixel');
-    deleteDiv[index].remove();
-    console.log(document.getElementById('pixel-board'));
-  }
-    
-}
-*/
-
 function criaPixels(num) {
-  document.documentElement.style.setProperty('--boardSizeRows', num);
-  document.documentElement.style.setProperty('--boardSizeColumns', num);
   for (let index = 0; index < num * num; index += 1) {
     const criaDiv = document.createElement('div');
     criaDiv.addEventListener('click', changeBackgrondColor);
@@ -91,8 +51,10 @@ function criaPixels(num) {
   }
 }
 
+criaPixels(boardSize);
+
 function limpaQuadros() {
-  for (let index = 0; index < (num * num); index += 1) {
+  for (let index = 0; index < (boardSize * boardSize); index += 1) {
     const getAllPixels = document.getElementsByClassName('pixel');
     getAllPixels[index].style.backgroundColor = 'white';
   }
