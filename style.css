@@ -1,3 +1,8 @@
+:root {
+  --boardSizeColumns: ;
+  --boardSizeRows: ;
+}
+
 h1 {
   position: relative;
 }
@@ -5,15 +10,32 @@ h1 {
 #color-palette {
   display: inline-flex;
   position: absolute;
+  margin-top: 10px;
+}
+
+#generate-board {
+  width: 100px;
+  height: 30px;
+}
+
+#clear-board {
+  width: 100px;
+  height: 30px;
+  margin-top: 20px;
+}
+
+#board-size {
+  margin-top: 100px;
+  width: 200px;
+  height: 24px;
 }
 
 #pixel-board {
   display: grid;
-  outline: black 1px solid;
+  grid-template-columns: repeat(var(--boardSizeColumns), 40px);
+  grid-template-rows: repeat(var(--boardSizeRows), 40px);
   width: 200px;
   margin-top: 20px;
-  grid-template-columns: repeat(auto-fill, 40px);
-  grid-template-rows: repeat(auto-fill, 40px);
 }
 
 .pixel {
