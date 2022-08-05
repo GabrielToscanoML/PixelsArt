@@ -1,3 +1,31 @@
+function randomColor() {
+  const color1 = document.querySelector('#black');
+  color1.style.backgroundColor = 'black';
+
+  const color2 = document.querySelector('#red');
+  color2.style.backgroundColor = `rgb(${randomColor1()},${randomColor2()},${randomColor3()})`;
+
+  const color3 = document.querySelector('#blue');
+  color3.style.backgroundColor = `rgb(${randomColor1()},${randomColor2()},${randomColor3()})`;
+
+  const color4 = document.querySelector('#green');
+  color4.style.backgroundColor = `rgb(${randomColor1()},${randomColor2()},${randomColor3()})`;
+}
+
+function randomColor1 () {
+  return Math.round(Math.random() * 255);
+}
+
+function randomColor2 () {
+  return Math.round(Math.random() * 255);
+}
+
+function randomColor3 () {
+  return Math.round(Math.random() * 255);
+}
+
+randomColor();
+
 // adicionei a classe selected inicialmente na cor black
 const blackColor = document.getElementById('black');
 blackColor.classList.add('selected');
@@ -6,12 +34,12 @@ const currentSelected = document.getElementsByClassName('selected');
 
 // cria a variavel que recebe a cor
 const selectedColor = document.getElementById('currentColor');
-selectedColor.style.backgroundColor = document.querySelector('.selected').id;
+selectedColor.style.backgroundColor = 'black';
 
 function getCurrentColor(identify) {
   currentSelected[0].classList.remove('selected');
   document.getElementById(identify).classList.add('selected');
-  selectedColor.style.backgroundColor = document.querySelector('.selected').id;
+  selectedColor.style.backgroundColor = document.querySelector('.selected').style.backgroundColor;
 }
 
 // criando evento para cada cor na paleta de cores
@@ -42,16 +70,16 @@ function changeBackgrondColor(currentPixel) {
 }
 
 // criacao do quadro
-const criaDiv = document.createElement('div');
 
 function criaPixelsInicial() {
   for (let index = 0; index < 25; index += 1) {
     document.documentElement.style.setProperty('--boardSizeRows', 5);
     document.documentElement.style.setProperty('--boardSizeColumns', 5);
-    criaDiv.addEventListener('click', changeBackgrondColor);
-    criaDiv.style.backgroundColor = 'white';
-    criaDiv.className = 'pixel';
-    document.getElementById('pixel-board').appendChild(criaDiv);
+    const criaDivInicial = document.createElement('div');
+    criaDivInicial.addEventListener('click', changeBackgrondColor);
+    criaDivInicial.style.backgroundColor = 'white';
+    criaDivInicial.className = 'pixel';
+    document.getElementById('pixel-board').appendChild(criaDivInicial);
   }
 }
 
@@ -70,6 +98,7 @@ function criaPixels(num) {
   document.documentElement.style.setProperty('--boardSizeRows', num);
   document.documentElement.style.setProperty('--boardSizeColumns', num);
   for (let index = 0; index < num * num; index += 1) {
+    const criaDiv = document.createElement('div');
     criaDiv.addEventListener('click', changeBackgrondColor);
     criaDiv.style.backgroundColor = 'white';
     criaDiv.className = 'pixel';
