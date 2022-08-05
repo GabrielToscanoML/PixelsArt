@@ -1,6 +1,6 @@
 :root {
-  --boardSizeColumns:
-  --boardSizeRows:
+  --boardSizeColumns: 0;
+  --boardSizeRows: 0;
 }
 
 h1 {

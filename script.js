@@ -42,12 +42,12 @@ function changeBackgrondColor(currentPixel) {
 }
 
 // criacao do quadro
+const criaDiv = document.createElement('div');
 
 function criaPixelsInicial() {
   for (let index = 0; index < 25; index += 1) {
     document.documentElement.style.setProperty('--boardSizeRows', 5);
     document.documentElement.style.setProperty('--boardSizeColumns', 5);
-    const criaDiv = document.createElement('div');
     criaDiv.addEventListener('click', changeBackgrondColor);
     criaDiv.style.backgroundColor = 'white';
     criaDiv.className = 'pixel';
@@ -57,14 +57,12 @@ function criaPixelsInicial() {
 
 criaPixelsInicial();
 
-function deletePixels(num) {
-  let pixelBoard = document.getElementById('pixel-board');
-  while(pixelBoard.lastChild){
+function deletePixels() {
+  const pixelBoard = document.getElementById('pixel-board');
+  while (pixelBoard.lastChild) {
     pixelBoard.removeChild(pixelBoard.lastChild);
   }
 }
-
-const getPixelBoard = document.getElementById('pixel-board');
 
 function criaPixels(num) {
   deletePixels(num);
@@ -72,7 +70,6 @@ function criaPixels(num) {
   document.documentElement.style.setProperty('--boardSizeRows', num);
   document.documentElement.style.setProperty('--boardSizeColumns', num);
   for (let index = 0; index < num * num; index += 1) {
-    const criaDiv = document.createElement('div');
     criaDiv.addEventListener('click', changeBackgrondColor);
     criaDiv.style.backgroundColor = 'white';
     criaDiv.className = 'pixel';
@@ -86,11 +83,11 @@ const btnGenerateBoard = document.getElementById('generate-board');
 btnGenerateBoard.addEventListener('click', () => {
   let getTextValue = document.getElementById('board-size').value;
   num = getTextValue;
-  if(getTextValue === '') {
+  if (getTextValue === '') {
     window.alert('Board Inválido!');
     return;
   }
-  if (getTextValue > 4 && getTextValue < 51) { 
+  if (getTextValue > 4 && getTextValue < 51) {
     criaPixels(getTextValue);
     return;
   }
@@ -99,20 +96,19 @@ btnGenerateBoard.addEventListener('click', () => {
     criaPixels(getTextValue);
     return;
   }
-  if (getTextValue < 5 && getTextValue > 0) {
+  if (getTextValue <= 5 && getTextValue >= 0) {
     getTextValue = 5;
     criaPixels(getTextValue);
-    return;
   }
 });
+
+function limpaQuadros() {
+  for (let index = 0; index < (num * num); index += 1) {
+    const getAllPixels = document.getElementsByClassName('pixel');
+    getAllPixels[index].style.backgroundColor = 'white';
+  }
+}
 
 const btnClear = document.getElementById('clear-board');
 btnClear.textContent = 'Limpar';
 btnClear.addEventListener('click', limpaQuadros);
-
-function limpaQuadros() {
-  for (let index = 0; index < (num * num); index += 1) {
-      const getAllPixels = document.getElementsByClassName('pixel');
-      getAllPixels[index].style.backgroundColor = 'white';
-  }
-}
