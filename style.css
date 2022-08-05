@@ -1,6 +1,6 @@
 :root {
-  --boardSizeColumns: ;
-  --boardSizeRows: ;
+  --boardSizeColumns:
+  --boardSizeRows:
 }
 
 h1 {
@@ -66,8 +66,4 @@ h1 {
 
 #green {
   background-color: green;
-}
-
-#clear-board {
-  margin-top: 60px;
 }

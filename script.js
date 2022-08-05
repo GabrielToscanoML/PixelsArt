@@ -58,10 +58,9 @@ function criaPixelsInicial() {
 criaPixelsInicial();
 
 function deletePixels(num) {
-  for (let index = 0; index < num * num; index += 1) {
-    const deleteDiv = document.querySelector('.pixel');
-    deleteDiv.remove();
-    console.log(document.getElementById('pixel-board'));
+  let pixelBoard = document.getElementById('pixel-board');
+  while(pixelBoard.lastChild){
+    pixelBoard.removeChild(pixelBoard.lastChild);
   }
 }
 
@@ -69,6 +68,7 @@ const getPixelBoard = document.getElementById('pixel-board');
 
 function criaPixels(num) {
   deletePixels(num);
+  console.log(document.getElementById('pixel-board'));
   document.documentElement.style.setProperty('--boardSizeRows', num);
   document.documentElement.style.setProperty('--boardSizeColumns', num);
   for (let index = 0; index < num * num; index += 1) {
