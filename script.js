@@ -93,8 +93,10 @@ function deletePixels() {
 }
 
 function criaPixels(num) {
+  if (num > 15) { // limitando o tamanho da grade
+    num = 15;
+  }
   deletePixels(num);
-  console.log(document.getElementById('pixel-board'));
   document.documentElement.style.setProperty('--boardSizeRows', num);
   document.documentElement.style.setProperty('--boardSizeColumns', num);
   for (let index = 0; index < num * num; index += 1) {
@@ -104,6 +106,9 @@ function criaPixels(num) {
     criaDiv.className = 'pixel';
     document.getElementById('pixel-board').appendChild(criaDiv);
   }
+  // limpando o input
+  const inputValue = document.getElementById('board-size');
+  inputValue.value = '';
 }
 
 let num = 5;

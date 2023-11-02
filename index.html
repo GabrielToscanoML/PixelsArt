@@ -6,23 +6,24 @@
   <title>Pixels Art</title>
 </head>
 <body>
-  <h1 id="title" >Paleta de Cores</h1>
+  <main>
+    <h1 id="title">Paleta de Cores</h1>
+    <section id="color-palette" >
+      <div class="color" id="black" > </div>
+      <div class="color" id="red" > </div>
+      <div class="color" id="blue" > </div>
+      <div class="color" id="green" > </div>
+    </section>
+    <div class="input-area">
+      <input type="number" id="board-size" placeholder="Digite o tamanho do quadro:" min="5" max="15">
+      <button id="generate-board">Confirmar</button>
+      <button id="clear-board" > </button>
+    </div>
+    <!-- gerado via script -->
+    <section id="pixel-board"></section>
+  </main>
 
-  <section id="color-palette" >
-    <div class="color" id="black" > </div>
-    <div class="color" id="red" > </div>
-    <div class="color" id="blue" > </div>
-    <div class="color" id="green" > </div>
-  </section>
-
-
-  <input type="number" id="board-size" placeholder="Digite o tamanho do quadro" min="1">
-  <button id="generate-board">VQV</button>
-  <button id="clear-board" > </button>
-  
-  <section id="pixel-board">
-
-  </section>
+  <!-- salvando a cor selecionada usando essa div -->
   <div id="currentColor" ></div>
   
   <script src="script.js"></script>
